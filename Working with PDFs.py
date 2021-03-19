@@ -9,8 +9,21 @@ import os
 os.getcwd()
 
 #change directory
-os.chdir('c:\\xxxxx')
+#os.chdir('c:\\xxxxx')
 
 #opem a file.  'rb opens in read binary mode
 pdfFile=open('meetingminutes1.pdf', 'rb')
+
+#read the pdfile
+reader=PyPDF2.PdfFileReader(pdfFile)
+#number of pages
+reader.numPages
+
+#get a page and extract text
+page = reader.getPage(0)
+page.extractText
+
+#get all the text in the document
+for pageNum in range(reader.numPages):
+    print(reader.getPage(pageNum).extractText())
 
